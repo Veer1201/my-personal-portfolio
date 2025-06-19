@@ -126,3 +126,80 @@ body{
     box-shadow: 0 0 15px rgba(0,0,0,0.1);
     margin-top: 2rem;
 }
+
+/* --- General Section Heading Styles (apply to all sections) --- */
+section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #333;
+    position: relative; /* For potential underline effect */
+}
+
+/* Optional: Subtle underline for section headings */
+section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #007bff; /* Use your accent color */
+    margin: 10px auto 0;
+}
+
+/* --- About Me Section Styles --- */
+.about {
+    background-color: #fff; /* White background for About section */
+}
+
+.about p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: center;
+    max-width: 800px; /* Limit paragraph width for readability */
+    margin: 0 auto 40px auto; /* Center paragraph and add bottom margin */
+    color: #555;
+}
+
+.about-info-grid {
+    display: flex; /* Use flexbox for horizontal layout of cards */
+    flex-wrap: wrap; /* Allow cards to wrap to the next line on smaller screens */
+    justify-content: center; /* Center cards within the grid */
+    gap: 20px; /* Space between cards */
+    margin-top: 20px;
+}
+
+.info-card {
+    background-color: #f8f8f8; /* Light background for info cards */
+    padding: 30px;
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+    text-align: center;
+    flex: 1; /* Allow cards to grow and shrink */
+    min-width: 280px; /* Minimum width before wrapping */
+    max-width: 350px; /* Maximum width for consistency */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.info-card:hover {
+    transform: translateY(-5px); /* Lift card slightly on hover */
+}
+
+.info-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.info-card p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 0; /* Reset paragraph margin as card has padding */
+    text-align: center; /* Ensure consistency within card */
+}
+
+.info-card i {
+    font-size: 2.5rem; /* Icon size */
+    color: #007bff; /* Accent color for icons */
+    margin-bottom: 15px;
+}
