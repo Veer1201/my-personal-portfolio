@@ -1,0 +1,38 @@
+/* Basic Resets and Global Styles */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+a{
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+/* Basic Heading Styles*/
+
+h1, h2, h3, h4, h5, h6{
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+p{
+    margin-bottom: 10px;
+}
