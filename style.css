@@ -203,3 +203,58 @@ section h2::after {
     color: #007bff; /* Accent color for icons */
     margin-bottom: 15px;
 }
+
+.work{
+    background-color: #f8f8f8;
+}
+
+.experience-list{
+    display: flex;
+    flex-direction:column;
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.experience-item{
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.experience-item:hover{
+    transform: translateY(-5px);
+}
+
+.experience-item h3{
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.experience-item .company{
+    font-size: 1.2rem;
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.experience-item .duration{
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.experience-item ul{
+    list-style: disc;
+    margin-left: 20px;
+    color: #555;
+}
+
+.experience-item ul li{
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
