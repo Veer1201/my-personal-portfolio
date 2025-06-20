@@ -1,131 +1,156 @@
-/* Basic Resets and Global Styles */
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html{
-    scroll-behavior: smooth;
-}
-
-body{
-    font-family: 'Arial', sans-serif;
+/* --- General Body/Root Styles (If not already set, good starting point) --- */
+/* This ensures a clean base for your existing light theme */
+body {
+    font-family: 'Arial', sans-serif; /* You can pick a modern sans-serif later if not already done */
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    color: #333; /* Default text color for a light theme */
+    background-color: #f4f4f4; /* A very light gray background for the overall page */
 }
 
-a{
-    color: #007bff;
-    text-decoration: none;
-}
-
-a:hover{
-    text-decoration: underline;
-}
-
-/* Basic Heading Styles*/
-
-h1, h2, h3, h4, h5, h6{
-    margin-bottom: 15px;
-    line-height: 1.2;
-}
-
-p{
-    margin-bottom: 10px;
-}
-
-.container{
+/* Consistent container for content width */
+.container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 20px; /* Horizontal padding for smaller screens */
 }
 
-section{
-    padding: 60px 0;
+/* Basic section padding */
+section {
+    padding: 80px 0; /* Consistent vertical padding for all sections */
 }
 
-header{
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
+/* --- Header & Navigation Baseline (Ensure these are present and visible) --- */
+header {
+    background-color: #fff; /* White header */
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    position: sticky;
     top: 0;
-    left: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-header.container{
+header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logo{
-    font-size: 1.8 rem;
-    font-weight: bold;
-    color: #fff;
+.logo {
+    font-size: 1.8rem;
+    color: #333;
+    text-decoration: none; /* Ensure logo link is clean */
 }
 
-nav ul{
+nav ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
 }
 
-nav ul li{
-    margin-left: 20px;
+nav ul li {
+    margin-left: 30px;
 }
 
-nav ul li a{
-    color: #fff;
+nav ul li a {
     text-decoration: none;
-    font-weight: bold;
+    color: #555;
+    font-weight: 500;
     transition: color 0.3s ease;
 }
 
-nav ul li a:hover{
-    color: #007bff;
+nav ul li a:hover {
+    color: #007bff; /* Existing blue accent for now */
 }
 
-body{
-    padding-top: 80px;
+
+/* --- Home/Hero Section Styling --- */
+.hero {
+    background-color: #fff; /* Clean white background for hero */
+    padding: 100px 0; /* Generous vertical padding */
+    min-height: 85vh; /* Make it take up most of the viewport */
+    display: flex; /* Use flexbox to center content vertically */
+    align-items: center;
+    justify-content: center; /* Center horizontally if content doesn't fill */
+    color: #333; /* Default text color for hero */
 }
 
-.hero{
-    background-color: #f8f8f8;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    min-height: calc(100vh-80px);
-    flex-direction: column;
+.hero .container {
+    display: flex; /* Inner flex container for text and image */
+    flex-direction: row; /* Default: text on left, image on right */
+    align-items: center; /* Vertically align items in the middle */
+    justify-content: space-between; /* Space elements efficiently */
+    gap: 60px; /* Gap between text content and image */
+    flex-wrap: wrap; /* Allow elements to wrap on smaller screens (basic responsiveness) */
+    text-align: left; /* Align text within its block */
 }
 
-.heo h1{
-    font-size: 3.5rem;
-    margin-bottom: 0.5rem;
-    color: #333;
+.hero-content {
+    flex: 1; /* Allow text content to take available space */
+    min-width: 300px; /* Ensure text block doesn't become too small */
+    padding-right: 20px; /* Add some padding if text is on the left */
 }
 
-.hero p{
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+.hero h1 {
+    font-size: 3.8rem; /* Large and impactful heading */
+    margin-bottom: 15px;
+    color: #222; /* Slightly darker for prominence */
+    line-height: 1.1;
+}
+
+.hero p {
+    font-size: 1.5rem; /* Clear and readable tagline */
+    margin-bottom: 30px; /* Space below tagline before button */
     color: #555;
+    opacity: 0.9;
 }
 
-.hero .profile-pic{
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #007bff;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    margin-top: 2rem;
+.hero-image {
+    flex-shrink: 0; /* Prevent image from shrinking disproportionately */
+    width: 350px; /* Defined width for the image wrapper */
+    height: 350px; /* Defined height to make it a perfect circle */
+    border-radius: 50%; /* Make the wrapper perfectly round */
+    overflow: hidden; /* Crucial to clip image to the circle */
+    display: flex; /* Use flex to center image within its circle */
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Subtle background for the image circle */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft, professional shadow */
 }
+
+.profile-pic {
+    width: 100%; /* Make image fill its circular container */
+    height: 100%;
+    object-fit: cover; /* Cover the area, cropping if necessary */
+    border-radius: 50%; /* Ensure the image itself is also round */
+}
+
+/* --- Button Styles (General & Primary) --- */
+.btn {
+    display: inline-block; /* Allows padding and width */
+    padding: 14px 28px;
+    border-radius: 6px; /* Slightly rounded corners */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+.primary-btn {
+    background-color: #007bff; /* Your current blue accent color */
+    color: #fff; /* White text on blue button */
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* Subtle shadow matching button color */
+}
+
+.primary-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4); /* Enhanced shadow on hover */
+}
+
+
 
 /* --- General Section Heading Styles (apply to all sections) --- */
 section h2 {
