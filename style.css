@@ -1,44 +1,49 @@
-/* --- General Body/Root Styles (If not already set, good starting point) --- */
-/* This ensures a clean base for your existing light theme */
-body {
-    font-family: 'Arial', sans-serif; /* You can pick a modern sans-serif later if not already done */
-    line-height: 1.6;
-    color: #333; /* Default text color for a light theme */
-    background-color: #f4f4f4; /* A very light gray background for the overall page */
+:root {
+    --primary-color: #007bff;
+    --primary-color-dark: #0056b3;
+    --text-dark: #222;
+    --text-light: #555;
+    --text-body: #333;
+    --background-white: #ffffff;
+    --background-off-white: #f8f9fa;
+    --background-page: #f4f4f4;
+    --font-main: 'Arial', sans-serif;
 }
 
-/* Consistent container for content width */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.6;
+    color: var(--text-body);
+    background-color: var(--background-page);
+}
+
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 20px; /* Horizontal padding for smaller screens */
+    padding: 0 20px;
 }
 
-/* Basic section padding */
 section {
-    padding: 80px 0; /* Consistent vertical padding for all sections */
+    padding: 80px 0;
 }
 
-/* --- Header & Navigation Baseline (Ensure these are present and visible) --- */
 header {
-    background-color: #fff; /* White header */
+    background-color: var(--background-white);
     padding: 15px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-header .container {
+.header-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-}
-
-.logo {
-    font-size: 1.8rem;
-    color: #333;
-    text-decoration: none; /* Ensure logo link is clean */
 }
 
 nav ul {
@@ -46,176 +51,195 @@ nav ul {
     margin: 0;
     padding: 0;
     display: flex;
-}
-
-nav ul li {
-    margin-left: 30px;
+    gap: 40px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: #555;
+    color: var(--text-body);
     font-weight: 500;
+    font-size: 1rem;
     transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #007bff; /* Existing blue accent for now */
+    color: var(--primary-color);
 }
 
-
-/* --- Home/Hero Section Styling --- */
 .hero {
-    background-color: #fff; /* Clean white background for hero */
-    padding: 100px 0; /* Generous vertical padding */
-    min-height: 85vh; /* Make it take up most of the viewport */
-    display: flex; /* Use flexbox to center content vertically */
+    padding: 100px 0;
+    min-height: 85vh;
+    display: flex;
     align-items: center;
-    justify-content: center; /* Center horizontally if content doesn't fill */
-    color: #333; /* Default text color for hero */
+    justify-content: center;
+    color: var(--text-body);
+    background-color: var(--background-off-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 123, 255, 0.15), transparent 70%);
+    top: -150px;
+    left: -200px;
+    filter: blur(100px);
+    z-index: 1;
+    animation: moveBlob1 15s infinite alternate;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(180, 50, 255, 0.1), transparent 70%);
+    bottom: -150px;
+    right: -150px;
+    filter: blur(100px);
+    z-index: 1;
+    animation: moveBlob2 18s infinite alternate;
 }
 
 .hero .container {
-    display: flex; /* Inner flex container for text and image */
-    flex-direction: row; /* Default: text on left, image on right */
-    align-items: center; /* Vertically align items in the middle */
-    justify-content: space-between; /* Space elements efficiently */
-    gap: 60px; /* Gap between text content and image */
-    flex-wrap: wrap; /* Allow elements to wrap on smaller screens (basic responsiveness) */
-    text-align: left; /* Align text within its block */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    flex-wrap: wrap;
+    text-align: left;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-content {
-    flex: 1; /* Allow text content to take available space */
-    min-width: 300px; /* Ensure text block doesn't become too small */
-    padding-right: 20px; /* Add some padding if text is on the left */
+    flex: 1;
+    min-width: 300px;
+    padding-right: 20px;
 }
 
 .hero h1 {
-    font-size: 3.8rem; /* Large and impactful heading */
+    font-size: 3rem;
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 200;
     margin-bottom: 15px;
-    color: #222; /* Slightly darker for prominence */
+    color: var(--text-dark);
     line-height: 1.1;
 }
 
 .hero p {
-    font-size: 1.5rem; /* Clear and readable tagline */
-    margin-bottom: 30px; /* Space below tagline before button */
-    color: #555;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: var(--text-light);
     opacity: 0.9;
 }
 
 .hero-image {
-    flex-shrink: 0; /* Prevent image from shrinking disproportionately */
-    width: 350px; /* Defined width for the image wrapper */
-    height: 350px; /* Defined height to make it a perfect circle */
-    border-radius: 50%; /* Make the wrapper perfectly round */
-    overflow: hidden; /* Crucial to clip image to the circle */
-    display: flex; /* Use flex to center image within its circle */
+    flex-shrink: 0;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0; /* Subtle background for the image circle */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft, professional shadow */
+    background-color: #f0f0f0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .profile-pic {
-    width: 100%; /* Make image fill its circular container */
+    width: 100%;
     height: 100%;
-    object-fit: cover; /* Cover the area, cropping if necessary */
-    border-radius: 50%; /* Ensure the image itself is also round */
+    object-fit: cover;
+    border-radius: 50%;
 }
 
-/* --- Button Styles (General & Primary) --- */
 .btn {
-    display: inline-block; /* Allows padding and width */
+    display: inline-block;
     padding: 14px 28px;
-    border-radius: 6px; /* Slightly rounded corners */
+    border-radius: 6px;
     text-decoration: none;
     font-weight: 600;
     font-size: 1.1rem;
     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    cursor: pointer; /* Indicate it's clickable */
+    cursor: pointer;
 }
 
 .primary-btn {
-    background-color: #007bff; /* Your current blue accent color */
-    color: #fff; /* White text on blue button */
+    background-color: var(--primary-color);
+    color: var(--background-white);
     border: none;
-    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* Subtle shadow matching button color */
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
 }
 
 .primary-btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-    transform: translateY(-2px); /* Slight lift effect */
-    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4); /* Enhanced shadow on hover */
+    background-color: var(--primary-color-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
 }
 
-
-
-/* --- General Section Heading Styles (apply to all sections) --- */
 section h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 30px;
-    color: #333;
-    position: relative; /* For potential underline effect */
+    color: var(--text-body);
+    position: relative;
 }
 
-/* Optional: Subtle underline for section headings */
 section h2::after {
     content: '';
     display: block;
     width: 60px;
     height: 3px;
-    background-color: #007bff; /* Use your accent color */
+    background-color: var(--primary-color);
     margin: 10px auto 0;
 }
 
-
---- About Me Section Styles ---
-/* --- About Section Styling --- */
 #about {
-    background-color: #fff; /* Clean white background, matches hero */
-    padding: 80px 0;
-    border-top: 1px solid #e9e9e9; /* Subtle separator line from the hero section */
+    background-color: var(--background-white);
+    border-top: 1px solid #e9e9e9;
 }
 
-/* Wrapper for the main content (image + text) */
 .about-content-wrapper {
     display: flex;
-    align-items: flex-start; /* Aligns text to the top of the image */
-    gap: 60px; /* Consistent gap between image and text */
-    flex-wrap: wrap; /* Allows image/text to stack on smaller screens */
-    margin-bottom: 80px; /* Ample space before hobbies section */
+    align-items: flex-start;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
 }
 
 .about-image {
-    flex: 1; /* Assigns 1 part of the available space */
-    min-width: 320px; /* Prevents the image from being squished too small */
-    max-width: 400px; /* Good max size for a bio image */
+    flex: 1;
+    min-width: 320px;
+    max-width: 400px;
 }
 
 .about-image img {
     width: 100%;
     height: auto;
-    border-radius: 8px; /* Soft rounded corners */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Matches hero image shadow for consistency */
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .about-text {
-    flex: 1.5; /* Assigns 1.5 parts of space, making text block wider than image */
-    min-width: 320px; /* Ensures text block maintains readability */
+    flex: 1.5;
+    min-width: 320px;
 }
 
 .about-text h2 {
+    text-align: left;
     font-size: 2.8rem;
-    color: #222;
+    color: var(--text-dark);
     margin-bottom: 20px;
     position: relative;
     padding-bottom: 10px;
 }
 
-/* Adds a small blue accent under the heading, like a modern signature */
 .about-text h2::after {
     content: '';
     position: absolute;
@@ -223,69 +247,73 @@ section h2::after {
     left: 0;
     width: 50px;
     height: 4px;
-    background-color: #007bff; /* Your primary blue */
+    background-color: var(--primary-color);
     border-radius: 2px;
+    margin: 0;
 }
 
 .about-text p {
     font-size: 1.1rem;
-    line-height: 1.8; /* Slightly more line spacing for readability */
-    color: #555;
+    line-height: 1.8;
+    color: var(--text-light);
     margin-bottom: 20px;
 }
 
-/* --- Hobbies & Interests Styling --- */
 .hobbies-wrapper {
     text-align: center;
 }
 
 .hobbies-wrapper h3 {
     font-size: 2.2rem;
-    color: #333;
+    color: var(--text-body);
     margin-bottom: 40px;
 }
 
 .hobbies-grid {
     display: grid;
-    /* Creates a responsive grid that fits as many 140px items as it can */
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 25px;
 }
 
 .hobby-item {
-    background-color: #f8f9fa; /* A very light gray to differentiate from the background */
+    background-color: var(--background-off-white);
     padding: 25px 15px;
     border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
 }
 
 .hobby-item:hover {
-    transform: translateY(-5px); /* Same hover lift as your primary button */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* A subtle, clean shadow */
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
 .hobby-item i {
-    font-size: 2.8rem; /* Large, clear icons */
-    color: #007bff; /* Your primary blue accent color */
-    margin-bottom: 15px;
+    font-size: 2.6rem;
+    color: var(--primary-color);
+    margin-bottom: 0;
 }
 
 .hobby-item span {
     font-size: 1rem;
     font-weight: 500;
     color: #444;
+    text-align: center;
 }
 
-/* --- About Section: Education Subsection --- */
 .education-info {
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid #eee; /* A subtle separator line */
+    border-top: 1px solid #eee;
 }
 
 .education-info h4 {
     font-size: 1.4rem;
-    color: #333;
+    color: var(--text-body);
     margin-bottom: 15px;
 }
 
@@ -296,42 +324,39 @@ section h2::after {
 }
 
 .education-info p strong {
-    color: #222;
+    color: var(--text-dark);
 }
 
-/* --- Skills Section Styling --- */
 #skills {
-    padding: 80px 0;
-    background-color: #f8f9fa; /* Light gray to visually separate from About section */
-    text-align: center;
+    background-color: var(--background-off-white);
 }
 
 .skills-header {
     margin-bottom: 50px;
 }
 
-.skills-header h2 {
-    font-size: 2.8rem;
-    color: #222;
-    margin-bottom: 10px;
+.skills-header h2,
+.skills-header h2::after {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .skills-header p {
     font-size: 1.2rem;
-    color: #666;
+    color: var(--text-light);
     max-width: 600px;
-    margin: 0 auto; /* Center the subtitle */
+    margin: 0 auto;
 }
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
-    text-align: left; /* Reset text-align for cards */
+    text-align: left;
 }
 
 .skill-card {
-    background-color: #fff;
+    background-color: var(--background-white);
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -344,125 +369,122 @@ section h2::after {
 }
 
 .skill-card h3 {
-    font-size: 1.5rem;
-    color: #333;
+    font-size: 1.35rem;
+    color: var(--text-body);
     margin-bottom: 20px;
-    border-bottom: 2px solid #007bff; /* Blue accent to highlight title */
+    border-bottom: 2px solid var(--primary-color);
     padding-bottom: 10px;
-    display: inline-block; /* Make border only as wide as the text */
+    display: inline-block;
 }
 
 .skill-list {
     display: flex;
-    flex-wrap: wrap; /* Allows skills to wrap to the next line */
-    gap: 12px; /* Space between each skill pill */
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
 .skill-list span {
-    background-color: #e9ecef; /* Light gray background for the "pill" */
+    background-color: #e9ecef;
     color: #495057;
     padding: 8px 15px;
-    border-radius: 20px; /* Creates the pill shape */
+    border-radius: 20px;
     font-size: 0.95rem;
     font-weight: 500;
 }
 
-
-
-.work{
-    background-color: #f8f8f8;
+.work {
+    background-color: var(--background-off-white);
 }
 
-.experience-list{
+.experience-list {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     gap: 30px;
     max-width: 900px;
     margin: 0 auto;
 }
 
-.experience-item{
-    background-color: #fff;
+.experience-item {
+    background-color: var(--background-white);
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease;
 }
 
-.experience-item:hover{
+.experience-item:hover {
     transform: translateY(-5px);
 }
 
-.experience-item h3{
+.experience-item h3 {
     font-size: 1.6rem;
-    color: #333;
+    color: var(--text-body);
     margin-bottom: 5px;
 }
 
-.experience-item .company{
+.experience-item .company {
     font-size: 1.2rem;
-    color: #007bff;
+    color: var(--primary-color);
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.experience-item .duration{
+.experience-item .duration {
     font-size: 0.9rem;
     color: #777;
     margin-bottom: 15px;
 }
 
-.experience-item ul{
+.experience-item ul {
     list-style: disc;
     margin-left: 20px;
-    color: #555;
+    color: var(--text-light);
 }
 
-.experience-item ul li{
+.experience-item ul li {
     margin-bottom: 8px;
     line-height: 1.6;
 }
 
-.project-grid{
+.project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 30px;
 }
 
-.project-item{
-    background-color: #f8f8f8;
+.project-item {
+    background-color: var(--background-white);
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     overflow: hidden;
-    text-align: center;
-    text-align: center;
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
 }
 
-.project-item:hover{
+.project-item:hover {
     transform: translateY(-5px);
 }
 
-.project-item img{
+.project-item img {
     width: 100%;
     height: 200px;
     object-fit: cover;
     display: block;
 }
 
-.project-content{
+.project-content {
     padding: 25px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
-.project-item h3{
+.project-item h3 {
     font-size: 1.5rem;
-    color: #333;
+    color: var(--text-body);
     margin-bottom: 10px;
 }
 
@@ -471,37 +493,22 @@ section h2::after {
     color: #666;
     line-height: 1.6;
     margin-bottom: 20px;
-    flex-grow: 1; 
+    flex-grow: 1;
 }
 
 .project-links {
-    margin-top: auto; 
+    margin-top: auto;
     display: flex;
     justify-content: center;
-    gap: 15px; 
+    gap: 15px;
 }
 
-.project-links a {
-    display: inline-block;
-    background-color: #007bff; 
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.project-links a:hover {
-    background-color: #0056b3; 
-}
-
-.contact{
-    background-color: #f8f8f8;
+.contact {
+    background-color: var(--background-off-white);
     text-align: center;
 }
 
-.contact-info{
+.contact-info {
     margin-top: 30px;
     display: flex;
     flex-direction: row;
@@ -510,87 +517,126 @@ section h2::after {
     gap: 25px;
 }
 
-.contact-info p{
+.contact-info p {
     font-size: 1.5rem;
-    color: #555;
+    color: var(--text-light);
     margin: 0;
 }
 
-.contact-info a{
-    color: #007bff;
+.contact-info a {
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
-.contact-info a:hover{
-    color: #0056b3;
+.contact-info a:hover {
+    color: var(--primary-color-dark);
 }
 
-.contact-info i{
+.contact-info i {
     margin-right: 8px;
     font-size: 1.3rem;
-    color: #333;
+    color: var(--text-body);
 }
 
-.contact-form{
+.contact-form {
     max-width: 600px;
     margin: 40px auto 0;
     padding: 30px;
-    background-color: #fff;
+    background-color: var(--background-white);
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     text-align: left;
 }
 
-.contact-form label{
+.contact-form label {
     display: block;
     font-weight: bold;
     margin-bottom: 8px;
-    color: #333;
+    color: var(--text-body);
 }
 
 .contact-form input[type="text"],
 .contact-form input[type="email"],
 .contact-form textarea {
-    width: calc(100% - 20px); 
+    width: 100%;
     padding: 12px 10px;
     margin-bottom: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 .contact-form textarea {
-    resize: vertical; 
+    resize: vertical;
     min-height: 120px;
 }
 
-.contact-form button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.contact-form button:hover {
-    background-color: #0056b3;
-}
-
 footer {
-    background-color: #333; 
-    color: #fff; 
-    text-align: center; 
+    background-color: var(--text-body);
+    color: var(--background-white);
+    text-align: center;
     padding: 20px 0;
-    margin-top: 50px;
 }
 
 footer p {
-    margin: 0; 
+    margin: 0;
     font-size: 0.9rem;
+}
+
+@keyframes moveBlob1 {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(40px, 20px) scale(1.1);
+    }
+}
+
+@keyframes moveBlob2 {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(-30px, -30px) scale(0.9);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    section h2, .about-text h2, .skills-header h2 {
+        font-size: 2rem;
+    }
+
+    .hero {
+        padding: 60px 0;
+    }
+}
+
+.form-group {
+    position: relative;
+}
+
+.validation-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    
+    /* Keep the icon hidden by default */
+    opacity: 0;
+    
+    /* Add a smooth transition */
+    transition: opacity 0.3s ease;
+}
+
+/* When an input is valid, its icon becomes visible */
+.form-group.valid .validation-icon {
+    opacity: 1;
 }
