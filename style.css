@@ -1,131 +1,156 @@
-/* Basic Resets and Global Styles */
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html{
-    scroll-behavior: smooth;
-}
-
-body{
-    font-family: 'Arial', sans-serif;
+/* --- General Body/Root Styles (If not already set, good starting point) --- */
+/* This ensures a clean base for your existing light theme */
+body {
+    font-family: 'Arial', sans-serif; /* You can pick a modern sans-serif later if not already done */
     line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    color: #333; /* Default text color for a light theme */
+    background-color: #f4f4f4; /* A very light gray background for the overall page */
 }
 
-a{
-    color: #007bff;
-    text-decoration: none;
-}
-
-a:hover{
-    text-decoration: underline;
-}
-
-/* Basic Heading Styles*/
-
-h1, h2, h3, h4, h5, h6{
-    margin-bottom: 15px;
-    line-height: 1.2;
-}
-
-p{
-    margin-bottom: 10px;
-}
-
-.container{
+/* Consistent container for content width */
+.container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 20px; /* Horizontal padding for smaller screens */
 }
 
-section{
-    padding: 60px 0;
+/* Basic section padding */
+section {
+    padding: 80px 0; /* Consistent vertical padding for all sections */
 }
 
-header{
-    background-color: #333;
-    color: #fff;
-    padding: 1rem 0;
-    position: fixed;
-    width: 100%;
+/* --- Header & Navigation Baseline (Ensure these are present and visible) --- */
+header {
+    background-color: #fff; /* White header */
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    position: sticky;
     top: 0;
-    left: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-header.container{
+header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logo{
-    font-size: 1.8 rem;
-    font-weight: bold;
-    color: #fff;
+.logo {
+    font-size: 1.8rem;
+    color: #333;
+    text-decoration: none; /* Ensure logo link is clean */
 }
 
-nav ul{
+nav ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
 }
 
-nav ul li{
-    margin-left: 20px;
+nav ul li {
+    margin-left: 30px;
 }
 
-nav ul li a{
-    color: #fff;
+nav ul li a {
     text-decoration: none;
-    font-weight: bold;
+    color: #555;
+    font-weight: 500;
     transition: color 0.3s ease;
 }
 
-nav ul li a:hover{
-    color: #007bff;
+nav ul li a:hover {
+    color: #007bff; /* Existing blue accent for now */
 }
 
-body{
-    padding-top: 80px;
+
+/* --- Home/Hero Section Styling --- */
+.hero {
+    background-color: #fff; /* Clean white background for hero */
+    padding: 100px 0; /* Generous vertical padding */
+    min-height: 85vh; /* Make it take up most of the viewport */
+    display: flex; /* Use flexbox to center content vertically */
+    align-items: center;
+    justify-content: center; /* Center horizontally if content doesn't fill */
+    color: #333; /* Default text color for hero */
 }
 
-.hero{
-    background-color: #f8f8f8;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    min-height: calc(100vh-80px);
-    flex-direction: column;
+.hero .container {
+    display: flex; /* Inner flex container for text and image */
+    flex-direction: row; /* Default: text on left, image on right */
+    align-items: center; /* Vertically align items in the middle */
+    justify-content: space-between; /* Space elements efficiently */
+    gap: 60px; /* Gap between text content and image */
+    flex-wrap: wrap; /* Allow elements to wrap on smaller screens (basic responsiveness) */
+    text-align: left; /* Align text within its block */
 }
 
-.heo h1{
-    font-size: 3.5rem;
-    margin-bottom: 0.5rem;
-    color: #333;
+.hero-content {
+    flex: 1; /* Allow text content to take available space */
+    min-width: 300px; /* Ensure text block doesn't become too small */
+    padding-right: 20px; /* Add some padding if text is on the left */
 }
 
-.hero p{
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+.hero h1 {
+    font-size: 3.8rem; /* Large and impactful heading */
+    margin-bottom: 15px;
+    color: #222; /* Slightly darker for prominence */
+    line-height: 1.1;
+}
+
+.hero p {
+    font-size: 1.5rem; /* Clear and readable tagline */
+    margin-bottom: 30px; /* Space below tagline before button */
     color: #555;
+    opacity: 0.9;
 }
 
-.hero .profile-pic{
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #007bff;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    margin-top: 2rem;
+.hero-image {
+    flex-shrink: 0; /* Prevent image from shrinking disproportionately */
+    width: 350px; /* Defined width for the image wrapper */
+    height: 350px; /* Defined height to make it a perfect circle */
+    border-radius: 50%; /* Make the wrapper perfectly round */
+    overflow: hidden; /* Crucial to clip image to the circle */
+    display: flex; /* Use flex to center image within its circle */
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Subtle background for the image circle */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Soft, professional shadow */
 }
+
+.profile-pic {
+    width: 100%; /* Make image fill its circular container */
+    height: 100%;
+    object-fit: cover; /* Cover the area, cropping if necessary */
+    border-radius: 50%; /* Ensure the image itself is also round */
+}
+
+/* --- Button Styles (General & Primary) --- */
+.btn {
+    display: inline-block; /* Allows padding and width */
+    padding: 14px 28px;
+    border-radius: 6px; /* Slightly rounded corners */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+.primary-btn {
+    background-color: #007bff; /* Your current blue accent color */
+    color: #fff; /* White text on blue button */
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); /* Subtle shadow matching button color */
+}
+
+.primary-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4); /* Enhanced shadow on hover */
+}
+
+
 
 /* --- General Section Heading Styles (apply to all sections) --- */
 section h2 {
@@ -146,63 +171,203 @@ section h2::after {
     margin: 10px auto 0;
 }
 
-/* --- About Me Section Styles --- */
-.about {
-    background-color: #fff; /* White background for About section */
+
+--- About Me Section Styles ---
+/* --- About Section Styling --- */
+#about {
+    background-color: #fff; /* Clean white background, matches hero */
+    padding: 80px 0;
+    border-top: 1px solid #e9e9e9; /* Subtle separator line from the hero section */
 }
 
-.about p {
+/* Wrapper for the main content (image + text) */
+.about-content-wrapper {
+    display: flex;
+    align-items: flex-start; /* Aligns text to the top of the image */
+    gap: 60px; /* Consistent gap between image and text */
+    flex-wrap: wrap; /* Allows image/text to stack on smaller screens */
+    margin-bottom: 80px; /* Ample space before hobbies section */
+}
+
+.about-image {
+    flex: 1; /* Assigns 1 part of the available space */
+    min-width: 320px; /* Prevents the image from being squished too small */
+    max-width: 400px; /* Good max size for a bio image */
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Soft rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Matches hero image shadow for consistency */
+}
+
+.about-text {
+    flex: 1.5; /* Assigns 1.5 parts of space, making text block wider than image */
+    min-width: 320px; /* Ensures text block maintains readability */
+}
+
+.about-text h2 {
+    font-size: 2.8rem;
+    color: #222;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* Adds a small blue accent under the heading, like a modern signature */
+.about-text h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 4px;
+    background-color: #007bff; /* Your primary blue */
+    border-radius: 2px;
+}
+
+.about-text p {
     font-size: 1.1rem;
-    line-height: 1.8;
-    text-align: center;
-    max-width: 800px; /* Limit paragraph width for readability */
-    margin: 0 auto 40px auto; /* Center paragraph and add bottom margin */
+    line-height: 1.8; /* Slightly more line spacing for readability */
     color: #555;
+    margin-bottom: 20px;
 }
 
-.about-info-grid {
-    display: flex; /* Use flexbox for horizontal layout of cards */
-    flex-wrap: wrap; /* Allow cards to wrap to the next line on smaller screens */
-    justify-content: center; /* Center cards within the grid */
-    gap: 20px; /* Space between cards */
-    margin-top: 20px;
-}
-
-.info-card {
-    background-color: #f8f8f8; /* Light background for info cards */
-    padding: 30px;
-    border-radius: 8px; /* Slightly rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+/* --- Hobbies & Interests Styling --- */
+.hobbies-wrapper {
     text-align: center;
-    flex: 1; /* Allow cards to grow and shrink */
-    min-width: 280px; /* Minimum width before wrapping */
-    max-width: 350px; /* Maximum width for consistency */
-    transition: transform 0.3s ease; /* Smooth hover effect */
 }
 
-.info-card:hover {
-    transform: translateY(-5px); /* Lift card slightly on hover */
-}
-
-.info-card h3 {
-    font-size: 1.5rem;
+.hobbies-wrapper h3 {
+    font-size: 2.2rem;
     color: #333;
+    margin-bottom: 40px;
+}
+
+.hobbies-grid {
+    display: grid;
+    /* Creates a responsive grid that fits as many 140px items as it can */
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 25px;
+}
+
+.hobby-item {
+    background-color: #f8f9fa; /* A very light gray to differentiate from the background */
+    padding: 25px 15px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hobby-item:hover {
+    transform: translateY(-5px); /* Same hover lift as your primary button */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* A subtle, clean shadow */
+}
+
+.hobby-item i {
+    font-size: 2.8rem; /* Large, clear icons */
+    color: #007bff; /* Your primary blue accent color */
+    margin-bottom: 15px;
+}
+
+.hobby-item span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #444;
+}
+
+/* --- About Section: Education Subsection --- */
+.education-info {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee; /* A subtle separator line */
+}
+
+.education-info h4 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.education-info p {
+    font-size: 1rem;
+    line-height: 1.6;
     margin-bottom: 10px;
 }
 
-.info-card p {
-    font-size: 1rem;
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 0; /* Reset paragraph margin as card has padding */
-    text-align: center; /* Ensure consistency within card */
+.education-info p strong {
+    color: #222;
 }
 
-.info-card i {
-    font-size: 2.5rem; /* Icon size */
-    color: #007bff; /* Accent color for icons */
-    margin-bottom: 15px;
+/* --- Skills Section Styling --- */
+#skills {
+    padding: 80px 0;
+    background-color: #f8f9fa; /* Light gray to visually separate from About section */
+    text-align: center;
 }
+
+.skills-header {
+    margin-bottom: 50px;
+}
+
+.skills-header h2 {
+    font-size: 2.8rem;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.skills-header p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto; /* Center the subtitle */
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+    gap: 30px;
+    text-align: left; /* Reset text-align for cards */
+}
+
+.skill-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #007bff; /* Blue accent to highlight title */
+    padding-bottom: 10px;
+    display: inline-block; /* Make border only as wide as the text */
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap; /* Allows skills to wrap to the next line */
+    gap: 12px; /* Space between each skill pill */
+}
+
+.skill-list span {
+    background-color: #e9ecef; /* Light gray background for the "pill" */
+    color: #495057;
+    padding: 8px 15px;
+    border-radius: 20px; /* Creates the pill shape */
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+
 
 .work{
     background-color: #f8f8f8;
